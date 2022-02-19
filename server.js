@@ -14,6 +14,16 @@ const pool = new Pool({
     database: "cyf_hotels",
 });
 
+app.get("/users", (req, res) => {
+
+    pool.query(`SELECT * FROM customers ORDER BY id`)
+        .then((result) => res.send(result.rows[0]))
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send(error);
+        });
+});
+
 app.get("/users/:customerId", (req, res) => {
     const customerId = req.params.customerId;
     const query = `SELECT * FROM customers WHERE id = $1;`;
