@@ -1,5 +1,5 @@
 // This is an example server
-
+// I am just adding comments.
 const express = require("express");
 const { Pool } = require("pg");
 
